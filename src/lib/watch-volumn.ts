@@ -2,7 +2,20 @@ interface ChangeHandler {
   (volumn: number): void;
 }
 
-export default async function watchVolumn(inAudioBuffer: any, onChange: ChangeHandler) {
+interface WatchOptions {
+  interval?: number;
+}
+
+const defaults: WatchOptions = {
+  interval: 500,
+};
+
+export default async function watchVolumn(
+  inAudioBuffer: any,
+  onChange: ChangeHandler,
+  inOptions?: WatchOptions
+) {
+  const options = { ...defaults, ...inOptions };
   const audioContext = new AudioContext();
   const soundBuffer = inAudioBuffer;
   const sampleBuffer = await audioContext.decodeAudioData(soundBuffer);
@@ -27,7 +40,7 @@ export default async function watchVolumn(inAudioBuffer: any, onChange: ChangeHa
     onChange(volume);
   }
 
-  let timer = setInterval(caclculateVolume, 500);
+  const timer = setInterval(caclculateVolume, options.interval);
 
   return {
     destroy() {
