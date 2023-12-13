@@ -8,14 +8,44 @@
 
 ## installation
 ```shell
-npm install @jswork/audio-utils
+yarn add @jswork/audio-utils
 ```
 
 ## usage
 ```js
-import audioUtils from '@jswork/audio-utils';
+import { checkPermission, watchAmplitude } from '@jswork/audio-utils';
 
-// usage goes here.
+// checkPermission
+checkPermission().then((res) => {
+  console.log(res);
+});
+
+// watchAmplitude when recorder
+useEffect(() => {
+  if (!isPlaying) return;
+  const res = watchAmplitude({
+    type: 'recorder',
+    context: recorder,
+    callback: (v) => {
+      console.log('volumn: ', v);
+    },
+  });
+  return res.destroy;
+}, [isPlaying]);
+
+// watchAmplitude when howler
+useEffect(() => {
+  if (!isPlaying) return;
+  const res = watchAmplitude({
+    type: 'howler',
+    context: Howler,
+    callback: (v) => {
+      console.log('volumn: ', v);
+    },
+  });
+  return res.destroy;
+}, [isPlaying]);
+
 ```
 
 ## types
