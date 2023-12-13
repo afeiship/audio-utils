@@ -1,4 +1,4 @@
-import watchVolumn from './lib/watch-volumn';
+import watchAmplitude from './lib/watch-amplitude';
 import checkPermission from './lib/check-permission';
 
-export { watchVolumn, checkPermission };
+export { watchAmplitude, checkPermission };
