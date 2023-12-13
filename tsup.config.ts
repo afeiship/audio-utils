@@ -6,7 +6,7 @@ export default defineConfig({
   splitting: true,
   cjsInterop: true,
   globalName: 'audioUtils',
-  external: ['media-devices'],
+  external: ['media-devices', 'howler'],
   dts: true,
   clean: true,
   sourcemap: true,
