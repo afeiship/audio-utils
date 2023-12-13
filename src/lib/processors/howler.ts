@@ -1,0 +1,23 @@
+export default class ProcessorHowler {
+  protected dataArray;
+  protected analyser;
+
+  constructor(public context) {
+    this.dataArray = [];
+  }
+
+  init() {
+    const audioContext = this.context.ctx;
+    this.analyser = audioContext.createAnalyser();
+    this.context.masterGain.connect(this.analyser);
+    this.dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+  }
+
+  get() {
+    this.analyser.getByteFrequencyData(this.dataArray);
+    const sum = this.dataArray.reduce(function(acc, val) {
+      return acc + val;
+    }, 0);
+    return sum / this.dataArray.length / 100;
+  }
+}
