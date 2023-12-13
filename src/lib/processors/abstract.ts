@@ -2,7 +2,7 @@ export default abstract class {
   protected dataArray;
   protected analyser;
 
-  protected constructor(public context) {
+  constructor(public context) {
     this.dataArray = [];
   }
 

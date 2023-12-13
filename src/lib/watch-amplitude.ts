@@ -19,7 +19,7 @@ interface WatchOptions {
 const defaults: WatchOptions = {
   context: null,
   type: 'recorder',
-  interval: 500,
+  interval: 200,
   callback: (_) => {
   },
 };

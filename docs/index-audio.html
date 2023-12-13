@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>watch-amplitude: audio</title>
+  <script src='/dist/index.iife.js'></script>
+  <style>
+    .container {
+      width: 50%;
+      min-width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #eee;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <audio id='a1' controls crossorigin='anonymous'>
+    <source
+      src='https://web-assets.alo7.com/assets/bugfixes/audios/test1-words-and-sentences-ok.wav'
+      type='audio/wav'
+    />
+    Your browser does not support the audio element.
+  </audio>
+
+  <button id='s1'>Play(Click ME!)</button>
+</div>
+<script>
+  const s1 = document.querySelector('#s1');
+  const a1 = document.querySelector('#a1');
+  let res;
+
+
+  s1.addEventListener('click', () => {
+    a1.play();
+    res = audioUtils.watchAmplitude({
+      type: 'audio',
+      context: a1,
+      callback: (v) => {
+        console.log('v: ', v);
+      },
+    });
+  });
+</script>
+</body>
+</html>

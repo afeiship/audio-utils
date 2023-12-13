@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>watch-amplitude: audio</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.js'></script>
+  <script src='/dist/index.iife.js'></script>
+  <style>
+    .container {
+      width: 50%;
+      min-width: 400px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #eee;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <button id='s1'>Play(Click ME!)</button>
+</div>
+<script>
+  const s1 = document.querySelector('#s1');
+  const sound = new Howl({
+    src: ['https://web-assets.alo7.com/assets/bugfixes/audios/test1-words-and-sentences-ok.wav'],
+  });
+  let res;
+
+  s1.addEventListener('click', () => {
+    sound.play();
+  });
+  sound.on('play', () => {
+    res = audioUtils.watchAmplitude({
+      type: 'howler',
+      context: Howler,
+      callback: (v) => {
+        console.log('v: ', v);
+      },
+    });
+  });
+</script>
+</body>
+</html>
