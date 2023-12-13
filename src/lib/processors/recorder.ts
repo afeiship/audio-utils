@@ -1,12 +1,6 @@
-export default class ProcessorRecorder {
-  protected dataArray;
+import Abstract from './abstract';
 
-  constructor(public context) {
-  }
-
-  init() {
-  }
-
+export default class ProcessorRecorder extends Abstract {
   get() {
     this.dataArray = this.context.getPlayAnalyseData();
     const maxAmplitude = Math.max(...this.dataArray);
