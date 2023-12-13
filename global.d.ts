@@ -1,1 +1,6 @@
-interface NxStatic {}
+interface NxStatic {
+}
+
+declare interface Window {
+  webkitAudioContext: AudioContext;
+}

@@ -1,14 +1,16 @@
 import ProcessorRecorder from './processors/recorder';
 import ProcessorHowler from './processors/howler';
+import ProcessorAudio from './processors/audio';
 
 const processors = {
   'recorder': ProcessorRecorder,
   'howler': ProcessorHowler,
+  'audio': ProcessorAudio,
 };
 
 interface WatchOptions {
   context?: any;
-  type?: 'recorder' | 'howler';
+  type?: 'recorder' | 'howler' | 'audio';
   interval?: number;
 
   callback: (amplitude: number) => void;
