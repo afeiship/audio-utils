@@ -10,10 +10,10 @@ const defaults: WatchOptions = {
   interval: 500,
 };
 
-export default async function watchAmplitude(
+export default function watchAmplitude(
   inArrayBuffer: any,
   onChange: ChangeHandler,
-  inOptions?: WatchOptions,
+  inOptions?: WatchOptions
 ) {
   const options = { ...defaults, ...inOptions };
 
