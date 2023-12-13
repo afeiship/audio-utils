@@ -46,6 +46,19 @@ useEffect(() => {
   return res.destroy;
 }, [isPlaying]);
 
+// watchAmplitude when audio
+useEffect(() => {
+  if (!isPlaying) return;
+  const res = watchAmplitude({
+    type: 'audio',
+    context: document.querySelector('#audio1'),
+    callback: (v) => {
+      console.log('volumn: ', v);
+    },
+  });
+  return res.destroy;
+}, [isPlaying]);
+
 ```
 
 ## types
