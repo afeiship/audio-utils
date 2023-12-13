@@ -32,7 +32,7 @@ export default function watchAmplitude(
 
   return {
     destroy() {
-      onChange(0);
+      inCallback(0);
       clearInterval(timer);
     },
   };
