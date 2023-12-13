@@ -11,17 +11,21 @@ const defaults: WatchOptions = {
 };
 
 export default function watchAmplitude(
-  inArrayBuffer: any,
+  inBufferGetter: any,
   onChange: ChangeHandler,
   inOptions?: WatchOptions
 ) {
   const options = { ...defaults, ...inOptions };
-
   function calculate() {
-    const maxAmplitude = Math.max(...inArrayBuffer);
-    const diff = maxAmplitude - 128;
-    const amplitude = diff / 128;
-    onChange(amplitude);
+    try {
+      const dataArray = inBufferGetter();
+      const maxAmplitude = Math.max(...dataArray);
+      const diff = maxAmplitude - 128;
+      const amplitude = diff / 128;
+      onChange(amplitude);
+    } catch (error) {
+      console.warn('Buffer data get failed~');
+    }
   }
 
   const timer = setInterval(calculate, options.interval);
