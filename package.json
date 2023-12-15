@@ -1,6 +1,6 @@
 {
   "name": "@jswork/audio-utils",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Audio utils.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -34,6 +34,9 @@
     "audio",
     "check",
     "media",
-    "permission"
+    "permission",
+    "helper",
+    "utility",
+    "utils"
   ]
 }
